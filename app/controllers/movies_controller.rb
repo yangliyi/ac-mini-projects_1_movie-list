@@ -18,9 +18,13 @@ class MoviesController < ApplicationController
   #POST /movies
   def create
     @movie = Movie.new(movie_params)
-    @movie.save
 
-    redirect_to movies_url
+    if @movie.save
+      redirect_to movies_url
+    else
+      render :action => :new
+    end
+
   end
 
   def edit
@@ -28,9 +32,11 @@ class MoviesController < ApplicationController
   end
 
   def update
-    @movie.update(movie_params)
-
-    redirect_to movie_path(@movie)
+    if @movie.update(movie_params)
+      redirect_to movie_path(@movie)
+    else
+      render :action => :edit
+    end
   end
 
   def destroy
