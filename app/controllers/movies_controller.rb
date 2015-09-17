@@ -3,7 +3,7 @@ class MoviesController < ApplicationController
   before_action :set_movie, :only => [ :show, :edit, :update, :destroy]
   #GET /movies
   def index
-    @movies = Movie.all
+    @movies = Movie.page(params[:page]).per(6)
   end
 
   def show
@@ -20,7 +20,7 @@ class MoviesController < ApplicationController
     @movie = Movie.new(movie_params)
 
     if @movie.save
-      flash[:notice] = "Thank you! This movie was successfully created!"
+      flash[:notice] = "Thank you! This movie was successfully added!"
       redirect_to movies_url
     else
       render :action => :new
