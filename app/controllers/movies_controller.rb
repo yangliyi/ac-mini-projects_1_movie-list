@@ -20,6 +20,7 @@ class MoviesController < ApplicationController
     @movie = Movie.new(movie_params)
 
     if @movie.save
+      flash[:notice] = "Thank you! This movie was successfully created!"
       redirect_to movies_url
     else
       render :action => :new
@@ -33,6 +34,7 @@ class MoviesController < ApplicationController
 
   def update
     if @movie.update(movie_params)
+      flash[:notice] = "Thank you! This movie was successfully updated!"
       redirect_to movie_path(@movie)
     else
       render :action => :edit
@@ -41,7 +43,7 @@ class MoviesController < ApplicationController
 
   def destroy
     @movie.destroy
-
+    flash[:alert] = "This was successfully deleted!"
     redirect_to movies_url
   end
 
