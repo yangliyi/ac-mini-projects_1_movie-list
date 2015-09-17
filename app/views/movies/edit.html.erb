@@ -1,7 +1,7 @@
-<%= form_for @movie, :url => movie_path(@movie), :method => :patch do |f| %>
+<%= form_for @movie, :url => movie_path(@movie), :method => :patch, :class => "form" do |f| %>
 
   <%= render :partial => "form", :locals => { :f => f } %>
 
-  <%= f.submit "Update" %>
+  <%= f.submit "Update", :class => "btn btn-primary" %>
 
 <% end %>

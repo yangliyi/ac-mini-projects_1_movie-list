@@ -1,7 +1,14 @@
 <h1>Movie List</h1>
 
 <table class="table">
+  <tr>
+    <th>Movie</th>
+    <th>Category</th>
+    <th>Rating</th>
+    <th>Action</th>
+  </tr>
 <% @movies.each do |movie| %>
+
   <tr>
     <td>
     <%= movie.name %>
@@ -13,17 +20,22 @@
     <%= movie.rating %>
     </td>
     <td>
-    <%= link_to "Detail", movie_path(movie), :class => "btn btn-primary" %>
+    <%= link_to "Detail", movie_path(movie), :class => "btn btn-info" %>
 
-    <%= link_to "Edit", edit_movie_path(movie), :class => "btn btn-primary" %>
+    <%= link_to "Edit", edit_movie_path(movie), :class => "btn btn-info" %>
 
-    <%= link_to "Delete", movie_path(movie), :method => :delete, :class => "btn btn-primary" %>
+    <%= link_to "Delete", movie_path(movie), :method => :delete, :class => "btn btn-danger" %>
 
     </td>
   </tr>
 <% end %>
+  <tr>
+    <td>
+      <%= paginate @movies %>
+    </td>
+  </tr>
 </table>
 
-<%= paginate @movies %>
+  <%= link_to 'Add New Movie', new_movie_path, :class => "btn btn-primary" %>
 
-<%= link_to 'Add New Movie', new_movie_path %>
+
