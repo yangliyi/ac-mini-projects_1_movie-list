@@ -7,6 +7,7 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.find(params[:id])
+    @page_title = @movie.name
   end
 
   #GET /movies/new
@@ -24,6 +25,7 @@ class MoviesController < ApplicationController
 
   def edit
     @movie = Movie.find( params[:id] )
+    @page_title = @movie.name
   end
 
   def update
