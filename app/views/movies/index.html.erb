@@ -1,11 +1,22 @@
 <h1>Movie List</h1>
-<ul>
+
+<table class="table">
 <% @movies.each do |movie| %>
-  <li>
+  <tr>
+    <td>
     <%= movie.name %>
+    </td>
+    <td>
     <%= movie.category %>
+    </td>
+    <td>
     <%= movie.rating %>
-  </li>
+    </td>
+    <td>
+    <%= link_to "Show", movie_path(movie), :class => "btn btn-primary" %>
+    </td>
+  </tr>
 <% end %>
-</ul>
+</table>
+
 <%= link_to 'Add New Movie', new_movie_path %>

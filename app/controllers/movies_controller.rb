@@ -1,25 +1,31 @@
 class MoviesController < ApplicationController
 
-  #GET movies
+  #GET /movies
   def index
-  @movies = Movie.all
+    @movies = Movie.all
   end
 
-  #GET movies/new
+  def show
+    @movie = Movie.find(params[:id])
+  end
+
+  #GET /movies/new
   def new
     @movie = Movie.new
   end
 
+  #POST /movies
   def create
-  @movie = Movie.new(movie_params)
-  @movie.save
+    @movie = Movie.new(movie_params)
+    @movie.save
 
-  redirect_to movies_url
+    redirect_to movies_url
   end
+
 
   private
 
   def movie_params
-  params.require(:movie).permit(:name, :description)
+  params.require(:movie).permit(:name, :description, :category, :rating)
   end
 end
