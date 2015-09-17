@@ -13,7 +13,10 @@
     <%= movie.rating %>
     </td>
     <td>
-    <%= link_to "Show", movie_path(movie), :class => "btn btn-primary" %>
+    <%= link_to "Detail", movie_path(movie), :class => "btn btn-primary" %>
+
+    <%= link_to "Edit", edit_movie_path(movie), :class => "btn btn-primary" %>
+
     </td>
   </tr>
 <% end %>

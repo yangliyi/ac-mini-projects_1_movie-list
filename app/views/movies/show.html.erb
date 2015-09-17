@@ -1,6 +1,6 @@
 <h2><%= @movie.name %></h2>
-<%=  @movie.category %>
-<%=  @movie.rating %>
-<%=  @movie.description %>
+<%=  simple_format @movie.category %>
+<%=  simple_format @movie.rating.to_s %>
+<%=  simple_format @movie.description %>
 
 <p><%= link_to "Back to Movie List", movies_path, :class => "btn btn-primary" %></p>
