@@ -3,7 +3,7 @@ class MoviesController < ApplicationController
   before_action :set_movie, :only => [ :show, :edit, :update, :destroy]
   #GET /movies
   def index
-    @movies = Movie.page(params[:page]).per(6)
+    @movies = Movie.page(params[:page]).per(5)
   end
 
   def show

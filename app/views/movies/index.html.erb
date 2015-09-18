@@ -29,13 +29,12 @@
     </td>
   </tr>
 <% end %>
-  <tr>
-    <td>
-      <%= paginate @movies %>
-    </td>
-  </tr>
 </table>
-
+<div>
+  <%= paginate @movies %>
+</div>
+<div>
   <%= link_to 'Add New Movie', new_movie_path, :class => "btn btn-primary" %>
+</div>
 
 
