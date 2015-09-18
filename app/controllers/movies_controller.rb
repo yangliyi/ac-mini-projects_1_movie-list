@@ -6,6 +6,8 @@ class MoviesController < ApplicationController
     @movies = Movie.order("rating DESC").page(params[:page]).per(5)
     if params[:movie_id]
       @movie = Movie.find( params[:movie_id] )
+    else
+      @movie = Movie.new
     end
   end
 
@@ -20,11 +22,11 @@ class MoviesController < ApplicationController
 
   #POST /movies
   def create
+    flash[:notice] = "Thank you! This movie was successfully added!"
     @movie = Movie.new(movie_params)
 
     if @movie.save
-      flash[:notice] = "Thank you! This movie was successfully added!"
-      redirect_to movies_url
+      redirect_to movies_url(:page => params[:page])
     else
       render :action => :new
     end
@@ -36,9 +38,10 @@ class MoviesController < ApplicationController
   end
 
   def update
+    flash[:notice] = "Thank you! This movie was successfully updated!"
     if @movie.update(movie_params)
-      flash[:notice] = "Thank you! This movie was successfully updated!"
-      redirect_to movie_path(@movie)
+
+      redirect_to movies_url(@movie, :page => params[:page])
     else
       render :action => :edit
     end
