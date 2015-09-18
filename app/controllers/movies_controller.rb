@@ -44,7 +44,7 @@ class MoviesController < ApplicationController
   def destroy
     @movie.destroy
     flash[:alert] = "This movie was successfully deleted!"
-    redirect_to movies_url
+    redirect_to :back
   end
 
   private
